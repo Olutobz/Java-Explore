@@ -1,5 +1,5 @@
 # JavaExplore
-Exploring some advance concepts in java uses mvc-architecture.
+Exploring some advance concepts in java
 
 # Technologies & Concepts Used
 - MVC - Architecture
