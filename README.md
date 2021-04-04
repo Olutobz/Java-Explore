@@ -1,5 +1,5 @@
 # JavaExplore
-Exploring some advance concepts in java uses mvc-architecture, IO Streams, multi-threading.
+Exploring some advance concepts in java
 
 # Technologies & Concepts Used
 - MVC - Architecture
