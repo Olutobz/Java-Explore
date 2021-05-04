@@ -25,6 +25,7 @@ public class ListDemo {
         Collection<Integer> list2 = new ArrayList<>();
         list2.add(9);
         list2.add(3);
+        list2.add(13);
 
         System.out.println("list2: " + list2);
 
