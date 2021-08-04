@@ -1,6 +1,8 @@
 package mvc.managers;
 
+import mvc.entities.Book;
 import mvc.entities.Movie;
+import mvc.entities.WebLink;
 
 public class BookmarkManager {
 
@@ -11,6 +13,29 @@ public class BookmarkManager {
 
     public static BookmarkManager getInstance() {
         return INSTANCE;
+    }
+
+    public Book createBook(long id, String title, int publicationYear,
+                           String publisher, double amazonRating) {
+
+        Book book = new Book();
+        book.setId(id);
+        book.setTitle(title);
+        book.setPublicationYear(publicationYear);
+        book.setPublisher(publisher);
+        book.setAmazonRating(amazonRating);
+        return book;
+
+    }
+
+
+    public WebLink createWeblink(long id, String title, String url, String host) {
+        WebLink webLink = new WebLink();
+        webLink.setId(id);
+        webLink.setTitle(title);
+        webLink.setUrl(url);
+        webLink.setHost(host);
+        return webLink;
     }
 
     public Movie createMovie(long id, String title, String profileUrl, int releaseYear,
