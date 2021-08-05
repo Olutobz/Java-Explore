@@ -1,12 +1,15 @@
 package mvc.managers;
 
+import mvc.dao.BookmarkDao;
 import mvc.entities.Book;
+import mvc.entities.Bookmark;
 import mvc.entities.Movie;
 import mvc.entities.WebLink;
 
 public class BookmarkManager {
 
     private static final BookmarkManager INSTANCE = new BookmarkManager();
+    private static BookmarkDao bookmarkDao = new BookmarkDao();
 
     private BookmarkManager() {
     }
@@ -15,9 +18,12 @@ public class BookmarkManager {
         return INSTANCE;
     }
 
+    public Bookmark[][] getBookmarks() {
+        return bookmarkDao.getBookmarks();
+    }
+
     public Book createBook(long id, String title, int publicationYear,
                            String publisher, String[] authors, String genre, double amazonRating) {
-
         Book book = new Book();
         book.setId(id);
         book.setTitle(title);
@@ -40,9 +46,9 @@ public class BookmarkManager {
         return webLink;
     }
 
+
     public Movie createMovie(long id, String title, String profileUrl, int releaseYear,
                              String[] casts, String[] directors, String genre, double imdbRating) {
-
         Movie movie = new Movie();
         movie.setId(id);
         movie.setTitle(title);
