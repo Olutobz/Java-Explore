@@ -1,2 +1,5 @@
 # JavaExplore
-Learning some advance concepts in java
+Exploring some advance concepts in java
+
+# Technologies & Concepts I learned
+- MVC - Architecture
