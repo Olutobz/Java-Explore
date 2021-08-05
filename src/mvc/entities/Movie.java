@@ -1,5 +1,7 @@
 package mvc.entities;
 
+import java.util.Arrays;
+
 public class Movie extends Bookmark {
     private int releaseYear;
     private String[] casts;
@@ -45,5 +47,16 @@ public class Movie extends Bookmark {
 
     public void setImdbRating(double imdbRating) {
         this.imdbRating = imdbRating;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "releaseYear=" + releaseYear +
+                ", casts=" + Arrays.toString(casts) +
+                ", directors=" + Arrays.toString(directors) +
+                ", genre='" + genre + '\'' +
+                ", imdbRating=" + imdbRating +
+                '}';
     }
 }
