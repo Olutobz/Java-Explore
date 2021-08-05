@@ -16,13 +16,15 @@ public class BookmarkManager {
     }
 
     public Book createBook(long id, String title, int publicationYear,
-                           String publisher, double amazonRating) {
+                           String publisher, String[] authors, String genre, double amazonRating) {
 
         Book book = new Book();
         book.setId(id);
         book.setTitle(title);
         book.setPublicationYear(publicationYear);
         book.setPublisher(publisher);
+        book.setAuthors(authors);
+        book.setGenre(genre);
         book.setAmazonRating(amazonRating);
         return book;
 

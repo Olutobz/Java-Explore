@@ -8,7 +8,7 @@ public class UserManager {
     private UserManager() {
     }
 
-    public static UserManager getINSTANCE() {
+    public static UserManager getInstance() {
         return INSTANCE;
     }
 
@@ -26,6 +26,5 @@ public class UserManager {
 
         return user;
     }
-
 
 }
