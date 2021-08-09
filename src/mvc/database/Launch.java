@@ -24,20 +24,6 @@ public class Launch {
 
     }
 
-    private static void printBookmarkData() {
-        for (Bookmark[] bookmarkList : bookmarks) {
-            for (Bookmark bookmark : bookmarkList) {
-                System.out.println(bookmark);
-            }
-
-        }
-    }
-
-    private static void printUserData() {
-        for (User user : users) {
-            System.out.println(user);
-        }
-    }
 
     public static void main(String[] args) {
         loadData();
