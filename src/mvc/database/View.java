@@ -15,6 +15,8 @@ public class View {
             Bookmark bookmark = bookmarks[typeOffset][bookmarkOffset];
 
             BookmarkController.getInstance().saveUserBookmark(user, bookmark);
+
+            System.out.println(bookmark);
         }
     }
 

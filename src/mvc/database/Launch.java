@@ -10,6 +10,11 @@ public class Launch {
     public static Bookmark[][] bookmarks;
     private static User[] users;
 
+    public static void main(String[] args) {
+        loadData();
+        startBookmarking();
+    }
+
     public static void loadData() {
         System.out.println("Loading data ...");
         DataStore.loadData();
@@ -39,13 +44,8 @@ public class Launch {
         }
     }
 
-    public static void main(String[] args) {
-        loadData();
-        startBookmarking();
-    }
-
     private static void startBookmarking() {
-        System.out.println("2. Bookmarking ...");
+        System.out.println("\n2. Bookmarking ...");
         for (User user : users) {
             View.bookmark(user, bookmarks);
         }
