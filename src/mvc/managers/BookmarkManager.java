@@ -1,10 +1,7 @@
 package mvc.managers;
 
 import mvc.dao.BookmarkDao;
-import mvc.entities.Book;
-import mvc.entities.Bookmark;
-import mvc.entities.Movie;
-import mvc.entities.WebLink;
+import mvc.entities.*;
 
 public class BookmarkManager {
 
@@ -62,4 +59,11 @@ public class BookmarkManager {
         return movie;
     }
 
+    public void saveUserBookmark(User user, Bookmark bookmark) {
+        UserBookmark userBookmark = new UserBookmark();
+        userBookmark.setUser(user);
+        userBookmark.setBookmark(bookmark);
+
+        bookmarkDao.saveUserBookmark(userBookmark);
+    }
 }
