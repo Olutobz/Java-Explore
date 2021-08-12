@@ -43,9 +43,12 @@ public class Launch {
             System.out.println(user);
         }
 
-        // remove after sorting conflicts
+        // remove these guys later, I'm trying to force a merge conflict
+
         System.out.println("testing out merging conflict");
         System.out.println("added another ");
+        String conflict = "have I added the forced merge conflict yet?";
+        System.out.println("conflict solved");
     }
 
     private static void startBookmarking() {
