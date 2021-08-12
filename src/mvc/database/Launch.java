@@ -43,7 +43,9 @@ public class Launch {
             System.out.println(user);
         }
 
+        // remove after sorting conflicts
         System.out.println("testing out merging conflict");
+        System.out.println("added another ");
     }
 
     private static void startBookmarking() {
