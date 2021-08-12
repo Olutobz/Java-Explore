@@ -42,6 +42,8 @@ public class Launch {
         for (User user : users) {
             System.out.println(user);
         }
+
+        System.out.println("testing out merging conflict");
     }
 
     private static void startBookmarking() {
