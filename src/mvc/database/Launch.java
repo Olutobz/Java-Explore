@@ -42,6 +42,7 @@ public class Launch {
         for (User user : users) {
             System.out.println(user);
         }
+
     }
 
     private static void startBookmarking() {
