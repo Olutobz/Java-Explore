@@ -3,6 +3,7 @@ package datastructures;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.ListIterator;
 
 public class ListDemo {
     public static void main(String[] args) {
@@ -53,6 +54,22 @@ public class ListDemo {
         list3.add(0, 7);
         System.out.println(list3);
         System.out.println("list1: " + list1);
+
+        listIteratorDemo();
+
+    }
+
+    static void listIteratorDemo() {
+        System.out.println("Inside listIteratorDemo ...");
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        System.out.println("Displaying current elements ...");
+        for (ListIterator<String> iterator = list.listIterator(); iterator.hasNext(); ) {
+            System.out.println("Iterator.nextIndex: " + iterator.nextIndex() + ", iterator.next: " + iterator.next());
+        }
 
     }
 
