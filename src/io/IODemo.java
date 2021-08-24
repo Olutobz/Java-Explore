@@ -17,18 +17,40 @@ public class IODemo {
         System.out.println("File size is: " + file.length() + " bytes");
         try (FileInputStream in = new FileInputStream(inFileStr);
              FileOutputStream out = new FileOutputStream(outFileStr)) {
-            startTime = System.currentTimeMillis();
+            startTime = System.nanoTime();
             int byteRead;
             while ((byteRead = in.read()) != -1) {
                 out.write(byteRead);
             }
 
-            elapsedTime = System.currentTimeMillis() - startTime;
-            System.out.println("Elapsed Time is: " + (elapsedTime / 1000000.0) + " s");
+            elapsedTime = System.nanoTime() - startTime;
+            System.out.println("Elapsed Time is: " + (elapsedTime / 1000000.0) + "ms");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    private static void fileCopyWithBufferAndArray() {
+        System.out.println("\nInside fileCopyWithBufferAndArray ...");
+        long startTime, elapsedTime;
+        startTime = System.nanoTime();
+        File file = new File(inFileStr);
+        System.out.println("File size is: " + file.length() + " bytes");
+        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(inFileStr));
+             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(outFileStr))) {
+            byte[] byteBuf = new byte[4000];
+            int byteRead;
+            while ((byteRead = in.read(byteBuf)) != -1) {
+                out.write(byteBuf, 0, byteRead);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        elapsedTime = System.nanoTime() - startTime;
+        System.out.println("Elapsed Time is: " + (elapsedTime / 1000000.0) + "ms");
 
     }
 
@@ -45,6 +67,7 @@ public class IODemo {
     public static void main(String[] args) {
         applyEncoding();
         fileCopyNoBuffer();
+        fileCopyWithBufferAndArray();
     }
 
 
