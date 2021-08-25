@@ -40,7 +40,7 @@ public class DataStore {
 
     private static void loadUsers() {
         users[0] = UserManager.getInstance().createUser(1000, "user0@upvaultinc.com",
-                "test", "mariam", "Abdulsalam", UserType.USER, Gender.FEMALE);
+                "test", "maryam", "Abdulsalam", UserType.USER, Gender.FEMALE);
 
         users[1] = UserManager.getInstance().createUser(1001, "user1@upvaultinc.com",
                 "test", "Emmanuel", "Olajubu", UserType.USER, Gender.MALE);
