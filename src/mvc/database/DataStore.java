@@ -1,5 +1,6 @@
 package mvc.database;
 
+import io.IOUtil;
 import mvc.constants.BookGenre;
 import mvc.constants.Gender;
 import mvc.constants.MovieGenre;
@@ -17,9 +18,10 @@ public class DataStore {
     public static final int USER_BOOKMARK_LIMIT = 5;
     public static final int TOTAL_USER_COUNT = 5;
 
-    private static User[] users = new User[TOTAL_USER_COUNT];
-    private static Bookmark[][] bookmarks = new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
-    private static UserBookmark[] userBookmarks = new UserBookmark[TOTAL_USER_BOOKMARK * USER_BOOKMARK_LIMIT];
+
+    private static final User[] users = new User[TOTAL_USER_COUNT];
+    private static final Bookmark[][] bookmarks = new Bookmark[BOOKMARK_TYPES_COUNT][BOOKMARK_COUNT_PER_TYPE];
+    private static final UserBookmark[] userBookmarks = new UserBookmark[TOTAL_USER_BOOKMARK * USER_BOOKMARK_LIMIT];
     private static int bookmarkIndex;
 
     public static Bookmark[][] getBookmarks() {
@@ -53,6 +55,20 @@ public class DataStore {
 
         users[4] = UserManager.getInstance().createUser(1004, "user4@upvaultinc.com",
                 "test", "Olutoba", "Onikoyi", UserType.CHIEF_EDITOR, Gender.MALE);
+
+//        String[] data = new String[TOTAL_USER_COUNT];
+//        IOUtil.read(data, "User");
+//        int rowNum = 0;
+//        for (String row : data) {
+//            String[] values = row.split("\t");
+//            int gender = Gender.MALE;
+//            if (values[5].equals("f")) {
+//                gender = Gender.FEMALE;
+//            } else if (values[5].equals("t")) {
+//                gender = Gender.TRANSGENDER;
+//            }
+//            users[rowNum++] = UserManager.getInstance().createUser(Long.parseLong(values[0]), values[1], values[2],
+//                    values[3], values[4], values[5], gender);
     }
 
     private static void loadWebLinks() {
@@ -74,6 +90,15 @@ public class DataStore {
 
         bookmarks[0][4] = BookmarkManager.getInstance().createWeblink(2004, "Virtual Hosting and Tomcat",
                 "https://tomcat.apache.org/tomcat-3.0-doc/virtual-hosting-howto.html", "https://tomcat.apache.org");
+
+//        String[] data = new String[BOOKMARK_COUNT_PER_TYPE];
+//        IOUtil.read(data, "WebLink");
+//        int colNum = 0;
+//        for (String row : data) {
+//            String[] values = row.split("\t");
+//            bookmarks[0][colNum++] = BookmarkManager.getInstance().createWeblink(Long.parseLong(values[0]),
+//                    values[1], values[2], values[3]);
+//        }
 
     }
 
@@ -98,6 +123,18 @@ public class DataStore {
                 1952, new String[]{"Takashi Shimura", "Minoru Chiaki"},
                 new String[]{"Akira Kurosawa"}, MovieGenre.FOREIGN_MOVIES, 8.4);
 
+//        String[] data = new String[BOOKMARK_COUNT_PER_TYPE];
+//        IOUtil.read(data, "Movie");
+//        int colNum = 0;
+//        for (String row : data) {
+//            String[] values = row.split("\t");
+//            String[] cast = values[3].split(",");
+//            String[] directors = values[4].split(",");
+//            bookmarks[1][colNum++] = BookmarkManager.getInstance().createMovie(Long.parseLong(values[0]),
+//                    values[1], values[2], Integer.parseInt(values[3]), cast, directors, values[4], Double.parseDouble(values[5]));
+//
+//        }
+
     }
 
     private static void loadBooks() {
@@ -118,6 +155,17 @@ public class DataStore {
 
         bookmarks[2][4] = BookmarkManager.getInstance().createBook(4004, "Effective Java programming Language Guide",
                 2007, "Prentice Hall", new String[]{"Joshua Bloch"}, BookGenre.TECHNICAL, 4.9);
+
+//        String[] data = new String[BOOKMARK_COUNT_PER_TYPE];
+//        IOUtil.read(data, "Book");
+//        int colNum = 0;
+//        for (String row : data) {
+//            String[] values = row.split("\t");
+//            String[] authors = values[4].split("\t");
+//            bookmarks[2][colNum++] = BookmarkManager.getInstance().createBook(Long.parseLong(values[0]),
+//                    values[1], Integer.parseInt(values[2]), values[3], authors, values[4], Double.parseDouble(values[5]));
+//
+//        }
 
     }
 
