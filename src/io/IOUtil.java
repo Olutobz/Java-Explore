@@ -16,4 +16,17 @@ public class IOUtil {
             e.printStackTrace();
         }
     }
+
+
+    public static String read(InputStream inputStream) {
+        StringBuilder text = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line).append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
