@@ -13,6 +13,13 @@ public class IODemo {
         applyEncoding();
         fileCopyNoBuffer();
         fileCopyWithBufferAndArray();
+        fileMethodsDemo();
+
+        // Serialization
+        if (args.length > 0 && args[0].equals("true")) {
+            new IODemo().doSerialization();
+        }
+        new IODemo().doDeserialization();
     }
 
     private static void fileCopyNoBuffer() {
@@ -72,11 +79,87 @@ public class IODemo {
         System.out.println();
     }
 
-
     private static void applyEncoding() {
         System.out.println("Inside applyEncoding ...");
         printEncodingDetails("a");
         printEncodingDetails("$");
         printEncodingDetails("\u1F602"); // Non_BMP Unicode
     }
+
+    public static void fileMethodsDemo() {
+        System.out.println("\nInside fileMethodsDemo ...");
+
+        File file = new File("/home/olutobz/IdeaProjects/JavaExplore/pexels-photo-1181244.jpeg");
+        // File f = new File("pexels-photo-1181244.jpeg");
+
+        System.out.println("getAbsolutePath(): " + file.getAbsolutePath());
+        try {
+            System.out.println("getCanonicalPath(): " + file.getCanonicalPath());
+            System.out.println("createNewFile(): " + file.createNewFile());
+        } catch (IOException e) {
+            System.out.println("separator: ");
+            System.out.println("separatorChar: ");
+            System.out.println("getParent(): " + file.getParent());
+            System.out.println("lastModified(): " + file.lastModified());
+            System.out.println("exists(): " + file.exists());
+            System.out.println("isFile(): " + file.isFile());
+            System.out.println("isDirectory(): " + file.isDirectory());
+            System.out.println("length(): " + file.length());
+
+            System.out.println("My working or User directory: " + System.getProperty("user.olutobz"));
+            System.out.println("new File(\"testdir\").mkdir(): " + new File("testdir").mkdir());
+
+        }
+    }
+
+    private void doDeserialization() {
+        System.out.println("\nInside doDeSerialization ...");
+
+        try (ObjectInputStream in =
+                     new ObjectInputStream(new BufferedInputStream(new FileInputStream("serial.ser")))) {
+            SerializableDemo serializableObj = (SerializableDemo) in.readObject();
+            System.out.println("name (after serialization): " + serializableObj.getName());
+            System.out.println("id (after serialization): " + serializableObj.getId());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void doSerialization() {
+        System.out.println("\nInside doSerialization ...");
+        SerializableDemo serializableDemo = new SerializableDemo();
+        serializableDemo.setName("Java");
+        System.out.println("name (before serialization): " + serializableDemo.getName());
+        System.out.println("id (before serialization): " + serializableDemo.getId());
+
+        try (ObjectOutputStream out =
+                     new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("serial.ser")))) {
+            out.writeObject(serializableDemo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static class SerializableDemo implements Serializable {
+        // Static final Long serialVersionUID = 8882416210786165012L;
+        // private String gender
+        private String name;
+        private transient int id = 4;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getId() {
+            return id;
+        }
+    }
+
+
 }
