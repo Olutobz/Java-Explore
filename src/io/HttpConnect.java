@@ -23,7 +23,6 @@ public class HttpConnect {
         return null;
     }
 
-
     public static void read(InputStream inputStream) {
 
     }
